@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{title}} - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to CodeClan's Library Request Form!</h1>
+    </header>
+        <h2>Here are just a few of our requested titles</h2>
+        <main>
+            <section class="titles-requested">
+                {% for book in books %}
+                <div class="single-titles">
+                    <p>{{book.title}}</p>
+                    <a href="{{ url_for('single_book', id=book.id) }}">View Full Details</a>
+                </div>
+                {% endfor %}
+            </section>
+            <section>
+                <h2>Can't find what you are looking for above?</h2>
+                <h3>Feel free to fill out the application below and we will see what we can do!</h3>
+                <form class="form-inline" action="/books" method="post">
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title">
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author">
+                    <label for="genre">Genre:</label>
+                    <input type="text" name="genre" id="genre">
+                    <label for="checked_out">Checked out?</label>
+                    <input type="checkbox" name="checked_out" id="checked_out">
+                    <input type="submit" value="Add request">
+                </form>
+            </section>
+        </main>
+    <footer>
+        <h2>Learning never exhausts the mind</h2>
+    </footer>
+    
+</body>
+</html>

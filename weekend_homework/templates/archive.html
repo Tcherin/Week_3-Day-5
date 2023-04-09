@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{title}} - Archive</title>
+</head>
+<body>
+    <header>
+        <h1>Archival Details</h1>
+    </header>
+        <main>
+            <div>
+                <ul>
+                    <li>
+                        <p>Title: {{book.title}}</p>
+                    </li>
+                    <li>
+                        <p> Author: {{book.author}}</p>
+                    </li>
+                    <li>
+                        <p>Genre: {{book.genre}}</p>
+                    </li>
+                    <li>
+                        <p>Availablity:</p>
+                        {% if book.checked_out %}
+                            <p><i>Currently checked Out</i></p>
+                        {% else %}
+                            <p><i>Currently available</i></p>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <form class="form-inline" action="/books/delete/{{ book.title }}" method="POST">
+                    <input type="submit" value="Delete">
+                  </form>
+            </section>
+        </main>
+    </body>
+</html>
